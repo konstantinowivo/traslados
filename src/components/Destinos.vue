@@ -82,7 +82,7 @@ const destinos = [
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: #1a472a;
+  color: #000;
   position: relative;
   padding-bottom: 15px;
 }
@@ -124,18 +124,24 @@ const destinos = [
 }
 
 .cataratas {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)),
-              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect fill="%234db8ff" width="400" height="300"/><path fill="%23fff" opacity="0.3" d="M0 150 Q100 120 200 150 T400 150 V300 H0 Z"/><text x="50%" y="50%" text-anchor="middle" fill="%23fff" font-size="40" font-weight="bold">Cataratas</text></svg>');
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+              url('/images/cataratas1.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .san-ignacio {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)),
-              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect fill="%23c49a6c" width="400" height="300"/><rect fill="%238b6f47" x="100" y="80" width="80" height="120"/><rect fill="%238b6f47" x="220" y="80" width="80" height="120"/><text x="50%" y="50%" text-anchor="middle" fill="%23fff" font-size="30" font-weight="bold">San Ignacio</text></svg>');
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+              url('/images/ruinas_san_ignacio.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .salto-encantado {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)),
-              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect fill="%2334a853" width="400" height="300"/><path fill="%2369d4ff" opacity="0.6" d="M150 0 L170 0 L190 300 L150 300 Z"/><text x="50%" y="50%" text-anchor="middle" fill="%23fff" font-size="28" font-weight="bold">Salto Encantado</text></svg>');
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+              url('/images/salto_encantado.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .minas-wanda {
@@ -144,13 +150,17 @@ const destinos = [
 }
 
 .jardin-aves {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)),
-              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect fill="%2300bcd4" width="400" height="300"/><circle fill="%23ffeb3b" cx="150" cy="120" r="20"/><path fill="%23ff5722" d="M150 140 Q130 160 150 180 Q170 160 150 140"/><text x="50%" y="85%" text-anchor="middle" fill="%23fff" font-size="28" font-weight="bold">Jardín de Aves</text></svg>');
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+              url('/images/ave1.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .hitos {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)),
-              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect fill="%2375aadb" width="133" height="300"/><rect fill="%23009b3a" x="133" width="133" height="300"/><rect fill="%23da291c" x="266" width="134" height="300"/><text x="50%" y="50%" text-anchor="middle" fill="%23fff" font-size="26" font-weight="bold">Tres Fronteras</text></svg>');
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+              url('/images/triple_frontera.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .destino-info {
@@ -158,13 +168,13 @@ const destinos = [
 }
 
 .destino-info h3 {
-  color: #1a472a;
+  color: #000;
   margin-bottom: 15px;
   font-size: 1.5rem;
 }
 
 .destino-info p {
-  color: #666;
+  color: #000;
   line-height: 1.6;
 }
 

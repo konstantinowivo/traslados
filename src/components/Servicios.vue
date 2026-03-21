@@ -74,7 +74,7 @@ const servicios = [
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: #1a472a;
+  color: #000;
   position: relative;
   padding-bottom: 15px;
 }
@@ -127,7 +127,7 @@ const servicios = [
 }
 
 .servicio-card p {
-  color: #666;
+  color: #000;
 }
 
 .servicio-card:hover p {

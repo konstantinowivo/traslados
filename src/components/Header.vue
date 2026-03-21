@@ -3,7 +3,7 @@
     <nav class="navbar">
       <div class="container">
         <div class="logo">
-          <h1>Traslados Misiones</h1>
+          <img src="/images/logo_traslados.png" alt="Traslados Misiones" class="logo-image">
         </div>
         <button
           class="hamburger"
@@ -70,8 +70,8 @@ onUnmounted(() => {
 
 <style scoped>
 header {
-  background-color: #1a472a;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -88,6 +88,17 @@ header {
   position: relative;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 90px;
+  width: auto;
+  object-fit: contain;
+}
+
 .logo h1 {
   color: #fff;
   font-size: 1.5rem;
@@ -101,9 +112,10 @@ header {
 }
 
 .nav-menu a {
-  color: #fff;
+  color: #000;
   text-decoration: none;
   font-weight: 500;
+  font-size: 1.15rem;
   transition: color 0.3s ease;
 }
 
@@ -124,7 +136,7 @@ header {
 .hamburger .bar {
   width: 25px;
   height: 3px;
-  background-color: #fff;
+  background-color: #000;
   margin: 3px 0;
   transition: all 0.3s ease;
   border-radius: 3px;
@@ -150,13 +162,13 @@ header {
   .nav-menu {
     position: fixed;
     left: -100%;
-    top: 70px;
+    top: 106px;
     flex-direction: column;
-    background-color: #1a472a;
+    background-color: #f9f9f9;
     width: 100%;
     text-align: center;
     transition: left 0.3s ease;
-    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.1);
     padding: 2rem 0;
     gap: 0;
     z-index: 99;

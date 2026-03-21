@@ -156,7 +156,7 @@ const handleSubmit = () => {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: #1a472a;
+  color: #000;
   position: relative;
   padding-bottom: 15px;
 }
@@ -186,7 +186,7 @@ const handleSubmit = () => {
 }
 
 .contacto-info h3 {
-  color: #1a472a;
+  color: #000;
   margin-bottom: 25px;
   font-size: 1.8rem;
 }
@@ -235,7 +235,7 @@ const handleSubmit = () => {
 .form-group label {
   display: block;
   margin-bottom: 8px;
-  color: #1a472a;
+  color: #000;
   font-weight: 600;
 }
 

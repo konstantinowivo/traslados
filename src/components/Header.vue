@@ -25,7 +25,7 @@
             </a>
           </li>
         </ul>
-        <div class="language-switch" @click="toggleLanguage">
+        <div class="language-switch" :class="{ active: menuActive }" @click="toggleLanguage">
           <span class="lang-label" :class="{ active: currentLanguage === 'es' }">ES</span>
           <div class="switch-toggle">
             <div class="switch-slider" :class="{ active: currentLanguage === 'en' }"></div>
@@ -231,12 +231,14 @@ header {
 }
 
 @media (max-width: 768px) {
-  .hamburger {
-    display: flex;
+  .navbar .container {
+    grid-template-columns: 1fr auto;
+    gap: 0;
   }
 
-  .navbar .container {
-    grid-template-columns: auto 1fr;
+  .hamburger {
+    display: flex;
+    order: 3;
   }
 
   .nav-menu {
@@ -252,6 +254,7 @@ header {
     padding: 2rem 0;
     gap: 0;
     z-index: 99;
+    order: 4;
   }
 
   .nav-menu.active {
@@ -260,7 +263,7 @@ header {
 
   .nav-menu li {
     padding: 1rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   .nav-menu li:last-child {
@@ -274,8 +277,22 @@ header {
   }
 
   .language-switch {
-    grid-column: 2;
-    justify-self: end;
+    order: 5;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    justify-content: center;
+    position: fixed;
+    left: -100%;
+    top: calc(115px + (4 * 3rem) + 2rem);
+    width: 100%;
+    background-color: #f9f9f9;
+    transition: left 0.3s ease;
+    z-index: 99;
+    margin: 0;
+  }
+
+  .language-switch.active {
+    left: 0;
   }
 }
 </style>

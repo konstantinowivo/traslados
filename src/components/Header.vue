@@ -2,9 +2,9 @@
   <header>
     <nav class="navbar">
       <div class="container">
-        <div class="logo">
+        <a href="#" class="logo" @click.prevent="scrollToTop">
           <img src="/images/logo_traslados.png" alt="Traslados Misiones" class="logo-image">
-        </div>
+        </a>
         <button
           class="hamburger"
           :class="{ active: menuActive }"
@@ -25,22 +25,32 @@
             </a>
           </li>
         </ul>
+        <div class="language-switch" @click="toggleLanguage">
+          <span class="lang-label" :class="{ active: currentLanguage === 'es' }">ES</span>
+          <div class="switch-toggle">
+            <div class="switch-slider" :class="{ active: currentLanguage === 'en' }"></div>
+          </div>
+          <span class="lang-label" :class="{ active: currentLanguage === 'en' }">EN</span>
+        </div>
       </div>
     </nav>
   </header>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { useI18n } from '../composables/useI18n';
+
+const { currentLanguage, t, toggleLanguage } = useI18n();
 
 const menuActive = ref(false);
 
-const navItems = [
-  { id: 1, text: 'Inicio', link: '#inicio' },
-  { id: 2, text: 'Destinos', link: '#destinos' },
-  { id: 3, text: 'Servicios', link: '#servicios' },
-  { id: 4, text: 'Contacto', link: '#contacto' }
-];
+const navItems = computed(() => [
+  { id: 1, text: t.value.nav.home, link: '#inicio' },
+  { id: 2, text: t.value.nav.destinations, link: '#destinos' },
+  { id: 3, text: t.value.nav.services, link: '#servicios' },
+  { id: 4, text: t.value.nav.contact, link: '#contacto' }
+]);
 
 const toggleMenu = () => {
   menuActive.value = !menuActive.value;
@@ -48,6 +58,13 @@ const toggleMenu = () => {
 
 const closeMenu = () => {
   menuActive.value = false;
+};
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 };
 
 const handleClickOutside = (e) => {
@@ -82,19 +99,26 @@ header {
 }
 
 .navbar .container {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  position: relative;
+  gap: 2rem;
 }
 
 .logo {
   display: flex;
   align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.02);
 }
 
 .logo-image {
-  height: 90px;
+  height: 99px;
   width: auto;
   object-fit: contain;
 }
@@ -109,18 +133,70 @@ header {
   display: flex;
   list-style: none;
   gap: 2rem;
+  justify-content: center;
 }
 
 .nav-menu a {
   color: #000;
   text-decoration: none;
   font-weight: 500;
-  font-size: 1.15rem;
+  font-size: 1.27rem;
   transition: color 0.3s ease;
 }
 
 .nav-menu a:hover {
   color: #4CAF50;
+}
+
+.language-switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.lang-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #999;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lang-label.active {
+  color: #4CAF50;
+}
+
+.switch-toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background-color: #ddd;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.switch-slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.switch-slider.active {
+  transform: translateX(20px);
+  background-color: #4CAF50;
+}
+
+.language-switch:hover .switch-toggle {
+  background-color: #ccc;
 }
 
 .hamburger {
@@ -159,10 +235,14 @@ header {
     display: flex;
   }
 
+  .navbar .container {
+    grid-template-columns: auto 1fr;
+  }
+
   .nav-menu {
     position: fixed;
     left: -100%;
-    top: 106px;
+    top: 115px;
     flex-direction: column;
     background-color: #f9f9f9;
     width: 100%;
@@ -193,8 +273,9 @@ header {
     width: 100%;
   }
 
-  .navbar .container {
-    flex-wrap: wrap;
+  .language-switch {
+    grid-column: 2;
+    justify-self: end;
   }
 }
 </style>

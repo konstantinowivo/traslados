@@ -1,57 +1,50 @@
 <template>
   <section id="contacto" class="contacto">
     <div class="container">
-      <h2 class="section-title">Solicitá tu Traslado</h2>
+      <h2 class="section-title">{{ t.contact.title }}</h2>
       <div class="contacto-content">
-        <div class="contacto-info">
-          <h3>Información de Contacto</h3>
-          <p><strong>📞 Teléfono:</strong> {{ contactInfo.phone }}</p>
-          <p><strong>📧 Email:</strong> {{ contactInfo.email }}</p>
-          <p><strong>📍 Ubicación:</strong> {{ contactInfo.location }}</p>
-          <p><strong>⏰ Horario:</strong> {{ contactInfo.schedule }}</p>
-          <div class="whatsapp-box">
-            <a
-              :href="contactInfo.whatsappLink"
-              class="btn-whatsapp-large"
-              target="_blank"
-            >
-              Chatea con nosotros en WhatsApp
-            </a>
-          </div>
-        </div>
         <div class="contacto-form">
           <form @submit.prevent="handleSubmit">
+            <!-- Campo oculto para Web3Forms - REEMPLAZAR 'YOUR_ACCESS_KEY_HERE' con el Access Key real -->
+            <input type="hidden" name="access_key" :value="accessKey">
+
+            <!-- Campo honeypot para protección anti-spam -->
+            <input type="checkbox" name="botcheck" style="display: none;">
+
             <div class="form-group">
-              <label for="nombre">Nombre Completo *</label>
+              <label for="nombre">{{ t.contact.form.name }} *</label>
               <input
                 type="text"
                 id="nombre"
+                name="nombre"
                 v-model="formData.nombre"
                 required
               />
             </div>
             <div class="form-group">
-              <label for="email">Email *</label>
+              <label for="email">{{ t.contact.form.email }} *</label>
               <input
                 type="email"
                 id="email"
+                name="email"
                 v-model="formData.email"
                 required
               />
             </div>
             <div class="form-group">
-              <label for="telefono">Teléfono *</label>
+              <label for="telefono">{{ t.contact.form.phone }} *</label>
               <input
                 type="tel"
                 id="telefono"
+                name="telefono"
                 v-model="formData.telefono"
                 required
               />
             </div>
             <div class="form-group">
-              <label for="destino">Destino</label>
-              <select id="destino" v-model="formData.destino">
-                <option value="">Seleccioná un destino</option>
+              <label for="destino">{{ t.contact.form.destination }}</label>
+              <select id="destino" name="destino" v-model="formData.destino">
+                <option value="">{{ t.contact.form.selectDestination }}</option>
                 <option
                   v-for="destino in destinos"
                   :key="destino.value"
@@ -62,34 +55,61 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="fecha">Fecha del Traslado</label>
+              <label for="fecha">{{ t.contact.form.date }}</label>
               <input
                 type="date"
                 id="fecha"
+                name="fecha"
                 v-model="formData.fecha"
               />
             </div>
             <div class="form-group">
-              <label for="pasajeros">Cantidad de Pasajeros</label>
+              <label for="pasajeros">{{ t.contact.form.passengers }}</label>
               <input
                 type="number"
                 id="pasajeros"
+                name="pasajeros"
                 v-model.number="formData.pasajeros"
                 min="1"
                 max="20"
               />
             </div>
             <div class="form-group">
-              <label for="mensaje">Mensaje</label>
+              <label for="mensaje">{{ t.contact.form.message }}</label>
               <textarea
                 id="mensaje"
+                name="mensaje"
                 v-model="formData.mensaje"
                 rows="4"
-                placeholder="Contanos sobre tu viaje y necesidades especiales..."
+                :placeholder="t.contact.form.messagePlaceholder"
               ></textarea>
             </div>
-            <button type="submit" class="btn-submit">Enviar Consulta</button>
+
+            <!-- Mensaje de estado -->
+            <div v-if="formStatus.message" :class="['form-message', formStatus.type]">
+              {{ formStatus.message }}
+            </div>
+
+            <button type="submit" class="btn-submit" :disabled="formStatus.submitting">
+              {{ formStatus.submitting ? (currentLanguage === 'es' ? 'Enviando...' : 'Sending...') : t.contact.form.submit }}
+            </button>
           </form>
+        </div>
+        <div class="contacto-info">
+          <h3>{{ t.contact.info.title }}</h3>
+          <p><strong>📞 {{ t.contact.info.phone }}:</strong> {{ contactInfo.phone }}</p>
+          <p><strong>📧 {{ t.contact.info.email }}:</strong> {{ contactInfo.email }}</p>
+          <p><strong>📍 {{ t.contact.info.location }}:</strong> {{ t.contact.info.locationValue }}</p>
+          <p><strong>⏰ {{ t.contact.info.schedule }}:</strong> {{ t.contact.info.scheduleValue }}</p>
+          <div class="whatsapp-box">
+            <a
+              :href="whatsappLink"
+              class="btn-whatsapp-large"
+              target="_blank"
+            >
+              {{ t.contact.info.whatsapp }}
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -97,25 +117,36 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, computed, ref } from 'vue';
+import { useI18n } from '../composables/useI18n';
+
+const { t, currentLanguage } = useI18n();
+
+// Access Key de Web3Forms obtenido de variables de entorno
+// Los mensajes del formulario se enviarán al email configurado en Web3Forms
+const accessKey = ref(import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KEY_HERE');
 
 const contactInfo = {
   phone: '+54 9 3757 312141',
-  email: 'info@trasladosmisiones.com',
-  location: 'Puerto Iguazú, Misiones, Argentina',
-  schedule: 'Lunes a Domingo de 6:00 a 22:00 hs',
-  whatsappLink: 'https://wa.me/5493757312141?text=Hola,%20necesito%20información%20sobre%20traslados'
+  email: 'info@trasladosmisiones.com'
 };
 
-const destinos = [
-  { value: 'cataratas', text: 'Cataratas del Iguazú' },
-  { value: 'san-ignacio', text: 'Ruinas de San Ignacio' },
-  { value: 'salto-encantado', text: 'Salto Encantado' },
-  { value: 'minas-wanda', text: 'Minas de Wanda' },
-  { value: 'jardin-aves', text: 'Jardín de las Aves' },
-  { value: 'hitos', text: 'Hito Tres Fronteras' },
-  { value: 'otro', text: 'Otro destino' }
-];
+const whatsappLink = computed(() => {
+  const message = currentLanguage.value === 'es'
+    ? 'Hola,%20necesito%20información%20sobre%20traslados'
+    : 'Hello,%20I%20need%20information%20about%20transfers';
+  return `https://wa.me/5493757312141?text=${message}`;
+});
+
+const destinos = computed(() => [
+  { value: 'cataratas', text: t.value.destinations.cataratas.title },
+  { value: 'san-ignacio', text: t.value.destinations.ruinas.title },
+  { value: 'salto-encantado', text: t.value.destinations.salto.title },
+  { value: 'minas-wanda', text: t.value.destinations.wanda.title },
+  { value: 'jardin-aves', text: t.value.destinations.aves.title },
+  { value: 'hitos', text: t.value.destinations.hitos.title },
+  { value: 'otro', text: currentLanguage.value === 'es' ? 'Otro destino' : 'Other destination' }
+]);
 
 const formData = reactive({
   nombre: '',
@@ -127,10 +158,56 @@ const formData = reactive({
   mensaje: ''
 });
 
-const handleSubmit = () => {
-  console.log('Formulario enviado:', formData);
-  alert('Gracias por tu consulta. Te contactaremos pronto!');
-  // Aquí puedes agregar la lógica para enviar el formulario
+const formStatus = reactive({
+  submitting: false,
+  message: '',
+  type: '' // 'success' o 'error'
+});
+
+const handleSubmit = async () => {
+  formStatus.submitting = true;
+  formStatus.message = '';
+
+  try {
+    const formElement = document.querySelector('form');
+    const formDataToSend = new FormData(formElement);
+
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formDataToSend
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      formStatus.type = 'success';
+      formStatus.message = t.value.contact.form.successMessage;
+
+      // Resetear el formulario
+      formData.nombre = '';
+      formData.email = '';
+      formData.telefono = '';
+      formData.destino = '';
+      formData.fecha = '';
+      formData.pasajeros = null;
+      formData.mensaje = '';
+    } else {
+      throw new Error('Error al enviar el formulario');
+    }
+  } catch (error) {
+    formStatus.type = 'error';
+    formStatus.message = currentLanguage.value === 'es'
+      ? 'Hubo un error al enviar el formulario. Por favor, intenta nuevamente.'
+      : 'There was an error submitting the form. Please try again.';
+    console.error('Error:', error);
+  } finally {
+    formStatus.submitting = false;
+
+    // Limpiar mensaje después de 5 segundos
+    setTimeout(() => {
+      formStatus.message = '';
+    }, 5000);
+  }
 };
 </script>
 
@@ -138,17 +215,16 @@ const handleSubmit = () => {
 .contacto {
   background: linear-gradient(to bottom,
               #f9f9f9 0%,
-              #f9f9f9 88%,
-              rgba(249, 249, 249, 0.95) 90%,
-              rgba(240, 245, 241, 0.9) 92%,
-              rgba(230, 240, 232, 0.85) 94%,
-              rgba(200, 220, 205, 0.8) 96%,
-              rgba(26, 71, 42, 0.3) 97%,
-              rgba(26, 71, 42, 0.5) 98%,
-              rgba(26, 71, 42, 0.7) 99%,
-              rgba(26, 71, 42, 0.85) 99.5%,
-              #1a472a 100%);
-  padding: 80px 0;
+              #f9f9f9 75%,
+              rgba(249, 249, 249, 0.98) 80%,
+              rgba(246, 251, 246, 0.95) 85%,
+              rgba(242, 248, 243, 0.9) 90%,
+              rgba(238, 246, 239, 0.85) 93%,
+              rgba(235, 244, 236, 0.8) 95%,
+              rgba(232, 242, 233, 0.9) 97%,
+              rgba(230, 240, 231, 0.95) 98.5%,
+              #e8f5e9 100%);
+  padding: 40px 0 0 0;
   margin-top: -1px;
 }
 
@@ -174,33 +250,31 @@ const handleSubmit = () => {
 
 .contacto-content {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1.5fr 1fr;
   gap: 50px;
+  align-items: start;
 }
 
 .contacto-info {
   background-color: white;
-  padding: 40px;
+  padding: 35px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .contacto-info h3 {
   color: #000;
-  margin-bottom: 25px;
-  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-size: 1.6rem;
 }
 
 .contacto-info p {
-  margin-bottom: 15px;
-  font-size: 1.05rem;
+  margin-bottom: 12px;
+  font-size: 1rem;
 }
 
 .whatsapp-box {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #e8f5e9;
-  border-radius: 8px;
+  margin-top: 25px;
   text-align: center;
 }
 
@@ -208,10 +282,10 @@ const handleSubmit = () => {
   display: inline-block;
   background-color: #25D366;
   color: white;
-  padding: 15px 30px;
+  padding: 12px 24px;
   border-radius: 50px;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   transition: all 0.3s ease;
 }
@@ -260,7 +334,7 @@ const handleSubmit = () => {
 .btn-submit {
   width: 100%;
   padding: 15px;
-  background-color: #1a472a;
+  background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 5px;
@@ -270,8 +344,33 @@ const handleSubmit = () => {
   transition: background-color 0.3s ease;
 }
 
-.btn-submit:hover {
-  background-color: #2d5a3f;
+.btn-submit:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+.btn-submit:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.form-message {
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.form-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.form-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }
 
 @media (max-width: 768px) {

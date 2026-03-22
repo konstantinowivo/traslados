@@ -1,7 +1,7 @@
 <template>
   <section id="destinos" class="destinos">
     <div class="container">
-      <h2 class="section-title">Nuestros Destinos</h2>
+      <h2 class="section-title">{{ t.destinations.title }}</h2>
       <div class="destinos-grid">
         <div
           v-for="destino in destinos"
@@ -23,51 +23,56 @@
 </template>
 
 <script setup>
-const destinos = [
+import { computed } from 'vue';
+import { useI18n } from '../composables/useI18n';
+
+const { t } = useI18n();
+
+const destinos = computed(() => [
   {
     id: 1,
     className: 'cataratas',
-    title: 'Cataratas del Iguazú',
-    description: 'Una de las 7 Maravillas Naturales del Mundo. Te llevamos al Parque Nacional Iguazú para que vivas una experiencia inolvidable.'
+    title: t.value.destinations.cataratas.title,
+    description: t.value.destinations.cataratas.description
   },
   {
     id: 2,
     className: 'san-ignacio',
-    title: 'Ruinas de San Ignacio',
-    description: 'Descubrí la historia jesuítica guaraní en estas increíbles ruinas declaradas Patrimonio de la Humanidad.'
+    title: t.value.destinations.ruinas.title,
+    description: t.value.destinations.ruinas.description
   },
   {
     id: 3,
     className: 'salto-encantado',
-    title: 'Salto Encantado',
-    description: 'Disfrutá de la belleza natural de este impresionante salto de agua en medio de la selva misionera.'
+    title: t.value.destinations.salto.title,
+    description: t.value.destinations.salto.description
   },
   {
     id: 4,
     className: 'minas-wanda',
-    title: 'Minas de Wanda',
-    description: 'Conocé las famosas piedras semipreciosas y cristales en estas fascinantes minas.'
+    title: t.value.destinations.wanda.title,
+    description: t.value.destinations.wanda.description
   },
   {
     id: 5,
     className: 'jardin-aves',
-    title: 'Jardín de las Aves',
-    description: 'Observá más de 150 especies de aves tropicales en su hábitat natural.'
+    title: t.value.destinations.aves.title,
+    description: t.value.destinations.aves.description
   },
   {
     id: 6,
     className: 'hitos',
-    title: 'Hito Tres Fronteras',
-    description: 'Visitá el punto donde se unen Argentina, Brasil y Paraguay.'
+    title: t.value.destinations.hitos.title,
+    description: t.value.destinations.hitos.description
   }
-];
+]);
 </script>
 
 <style scoped>
 .destinos {
   background: linear-gradient(to bottom,
               rgba(0, 0, 0, 0.3) 0%,
-              rgba(26, 71, 42, 0.15) 3%,
+              rgba(76, 175, 80, 0.15) 3%,
               rgba(249, 249, 249, 0.5) 6%,
               #f9f9f9 10%,
               #f9f9f9 90%,
@@ -145,8 +150,10 @@ const destinos = [
 }
 
 .minas-wanda {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)),
-              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect fill="%239c27b0" width="400" height="300"/><circle fill="%23e1bee7" cx="100" cy="100" r="30"/><circle fill="%23ce93d8" cx="200" cy="150" r="40"/><circle fill="%23ba68c8" cx="300" cy="120" r="35"/><text x="50%" y="85%" text-anchor="middle" fill="%23fff" font-size="32" font-weight="bold">Minas Wanda</text></svg>');
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+              url('/images/minas_wanda.png');
+  background-size: cover;
+  background-position: center;
 }
 
 .jardin-aves {

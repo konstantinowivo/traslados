@@ -1,29 +1,37 @@
 <template>
   <footer>
     <div class="container">
-      <p>&copy; {{ currentYear }} Traslados Misiones. Todos los derechos reservados.</p>
-      <p>{{ slogan }}</p>
+      <p>&copy; {{ currentYear }} Traslados Misiones. {{ t.footer.rights }}.</p>
+      <p>{{ t.footer.slogan }}</p>
     </div>
   </footer>
 </template>
 
 <script setup>
 import { computed } from 'vue';
+import { useI18n } from '../composables/useI18n';
+
+const { t } = useI18n();
 
 const currentYear = computed(() => new Date().getFullYear());
-const slogan = 'Descubrí la magia de Misiones con seguridad y confort';
 </script>
 
 <style scoped>
 footer {
-  background-color: #1a472a;
-  color: white;
+  background-color: #e8f5e9;
+  color: #2e7d32;
   text-align: center;
-  padding: 30px 0;
-  margin-top: -1px;
+  padding: 60px 0 40px 0;
+  margin-top: 0;
 }
 
 footer p {
-  margin: 5px 0;
+  margin: 8px 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+footer p:first-child {
+  font-weight: 500;
 }
 </style>

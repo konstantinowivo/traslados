@@ -64,6 +64,24 @@ const destinos = computed(() => [
     className: 'hitos',
     title: t.value.destinations.hitos.title,
     description: t.value.destinations.hitos.description
+  },
+  {
+    id: 7,
+    className: 'cataratas-brasil',
+    title: t.value.destinations.cataratasBrasil.title,
+    description: t.value.destinations.cataratasBrasil.description
+  },
+  {
+    id: 8,
+    className: 'mocona',
+    title: t.value.destinations.mocona.title,
+    description: t.value.destinations.mocona.description
+  },
+  {
+    id: 9,
+    className: 'shopping',
+    title: t.value.destinations.shopping.title,
+    description: t.value.destinations.shopping.description
   }
 ]);
 </script>
@@ -166,6 +184,27 @@ const destinos = computed(() => [
 .hitos {
   background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
               url('/images/triple_frontera.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.cataratas-brasil {
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+              url('/images/cataratas_brasil.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.mocona {
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+              url('/images/saltos_mocona.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.shopping {
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+              url('/images/ciudad_del_este.jpg');
   background-size: cover;
   background-position: center;
 }

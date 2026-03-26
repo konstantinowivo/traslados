@@ -35,12 +35,24 @@ const translations = {
         description: 'Explorá las famosas minas de piedras semipreciosas. Amatistas, ágatas y cuarzos en formaciones naturales únicas.'
       },
       aves: {
-        title: 'Jardín de las Aves',
+        title: 'Parque de las Aves',
         description: 'Más de 150 especies de aves exóticas en su hábitat natural. Una experiencia única para los amantes de la naturaleza.'
       },
       hitos: {
         title: 'Hito Tres Fronteras',
         description: 'El punto donde se encuentran Argentina, Brasil y Paraguay. Vista panorámica del río Iguazú y sus tres países.'
+      },
+      cataratasBrasil: {
+        title: 'Cataratas lado Brasileño',
+        description: 'Experimentá las Cataratas del Iguazú desde la perspectiva brasileña. Vista panorámica incomparable de los saltos argentinos.'
+      },
+      mocona: {
+        title: 'Saltos del Moconá',
+        description: 'Cascadas únicas en el mundo que corren paralelas al río Uruguay. Un espectáculo natural de 3 kilómetros de extensión.'
+      },
+      shopping: {
+        title: 'Tour de Compras Ciudad del Este',
+        description: 'El paraíso de las compras en Paraguay. Electrónica, perfumes, ropa y más a precios increíbles en la zona franca.'
       }
     },
     services: {
@@ -139,6 +151,18 @@ const translations = {
       hitos: {
         title: 'Three Borders Landmark',
         description: 'The point where Argentina, Brazil and Paraguay meet. Panoramic view of the Iguazu River and its three countries.'
+      },
+      cataratasBrasil: {
+        title: 'Brazilian Side of Iguazu Falls',
+        description: 'Experience Iguazu Falls from the Brazilian perspective. Incomparable panoramic view of the Argentine waterfalls.'
+      },
+      mocona: {
+        title: 'Moconá Falls',
+        description: 'Unique waterfalls in the world that run parallel to the Uruguay River. A natural spectacle spanning 3 kilometers.'
+      },
+      shopping: {
+        title: 'Ciudad del Este Shopping Tour',
+        description: 'Shopping paradise in Paraguay. Electronics, perfumes, clothing and more at incredible prices in the duty-free zone.'
       }
     },
     services: {

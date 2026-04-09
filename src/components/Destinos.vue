@@ -144,66 +144,67 @@ const destinos = computed(() => [
   height: 250px;
   background-size: cover;
   background-position: center;
+  filter: brightness(1.15);
 }
 
 .cataratas {
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
               url('/images/cataratas1.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .san-ignacio {
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
               url('/images/ruinas_san_ignacio.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .salto-encantado {
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
               url('/images/salto_encantado.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .minas-wanda {
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
               url('/images/minas_wanda.png');
   background-size: cover;
   background-position: center;
 }
 
 .jardin-aves {
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
               url('/images/ave1.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .hitos {
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
               url('/images/triple_frontera.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .cataratas-brasil {
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
               url('/images/cataratas_brasil.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .mocona {
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
               url('/images/saltos_mocona.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .shopping {
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
               url('/images/ciudad_del_este.jpg');
   background-size: cover;
   background-position: center;

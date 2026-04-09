@@ -98,7 +98,6 @@
         <div class="contacto-info">
           <h3>{{ t.contact.info.title }}</h3>
           <p><strong>📞 {{ t.contact.info.phone }}:</strong> {{ contactInfo.phone }}</p>
-          <p><strong>📧 {{ t.contact.info.email }}:</strong> {{ contactInfo.email }}</p>
           <p><strong>📍 {{ t.contact.info.location }}:</strong> {{ t.contact.info.locationValue }}</p>
           <p><strong>⏰ {{ t.contact.info.schedule }}:</strong> {{ t.contact.info.scheduleValue }}</p>
           <div class="whatsapp-box">
@@ -127,8 +126,7 @@ const { t, currentLanguage } = useI18n();
 const accessKey = ref(import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KEY_HERE');
 
 const contactInfo = {
-  phone: '+54 9 3757 312141',
-  email: 'info@trasladosmisiones.com'
+  phone: '+54 9 3757 312141'
 };
 
 const whatsappLink = computed(() => {

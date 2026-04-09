@@ -87,7 +87,13 @@ onUnmounted(() => {
 
 <style scoped>
 header {
-  background-color: #f9f9f9;
+  background: linear-gradient(to right,
+              rgba(0, 0, 0, 0.65) 0%,
+              rgba(0, 0, 0, 0.35) 50%,
+              rgba(0, 0, 0, 0.15) 100%),
+              url('/images/cataratas2.jpg');
+  background-size: cover;
+  background-position: center right;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
@@ -137,15 +143,16 @@ header {
 }
 
 .nav-menu a {
-  color: #000;
+  color: #fff;
   text-decoration: none;
   font-weight: 500;
   font-size: 1.27rem;
   transition: color 0.3s ease;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .nav-menu a:hover {
-  color: #4CAF50;
+  color: #FFD700;
 }
 
 .language-switch {
@@ -159,14 +166,15 @@ header {
 .lang-label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #999;
+  color: #ccc;
   transition: color 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .lang-label.active {
-  color: #4CAF50;
+  color: #FFD700;
 }
 
 .switch-toggle {
@@ -192,7 +200,7 @@ header {
 
 .switch-slider.active {
   transform: translateX(20px);
-  background-color: #4CAF50;
+  background-color: #FFD700;
 }
 
 .language-switch:hover .switch-toggle {
@@ -212,10 +220,11 @@ header {
 .hamburger .bar {
   width: 25px;
   height: 3px;
-  background-color: #000;
+  background-color: #fff;
   margin: 3px 0;
   transition: all 0.3s ease;
   border-radius: 3px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hamburger.active .bar:nth-child(1) {
@@ -246,7 +255,10 @@ header {
     left: -100%;
     top: 115px;
     flex-direction: column;
-    background-color: #f9f9f9;
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+                url('/images/cataratas2.jpg');
+    background-size: cover;
+    background-position: center;
     width: 100%;
     text-align: center;
     transition: left 0.3s ease;
@@ -263,7 +275,7 @@ header {
 
   .nav-menu li {
     padding: 1rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .nav-menu li:last-child {
@@ -279,13 +291,16 @@ header {
   .language-switch {
     order: 5;
     padding: 1.5rem 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     justify-content: center;
     position: fixed;
     left: -100%;
     top: calc(115px + (4 * 3rem) + 2rem);
     width: 100%;
-    background-color: #f9f9f9;
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+                url('/images/cataratas2.jpg');
+    background-size: cover;
+    background-position: center;
     transition: left 0.3s ease;
     z-index: 99;
     margin: 0;

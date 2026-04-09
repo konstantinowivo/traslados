@@ -8,6 +8,11 @@
             <!-- Campo oculto para Web3Forms - REEMPLAZAR 'YOUR_ACCESS_KEY_HERE' con el Access Key real -->
             <input type="hidden" name="access_key" :value="accessKey">
 
+            <!-- Email de destino donde se recibirán los formularios -->
+            <input type="hidden" name="from_name" value="Traslados Misiones - Formulario Web">
+            <input type="hidden" name="subject" value="Nueva consulta desde el sitio web">
+            <input type="hidden" name="redirect" value="https://trasladosmalvinas.vercel.app/#contacto">
+
             <!-- Campo honeypot para protección anti-spam -->
             <input type="checkbox" name="botcheck" style="display: none;">
 
@@ -122,7 +127,12 @@ import { useI18n } from '../composables/useI18n';
 const { t, currentLanguage } = useI18n();
 
 // Access Key de Web3Forms obtenido de variables de entorno
-// Los mensajes del formulario se enviarán al email configurado en Web3Forms
+// IMPORTANTE: Para recibir los formularios en julioernestovilches@gmail.com:
+// 1. Ir a https://web3forms.com
+// 2. Registrarse con el email julioernestovilches@gmail.com
+// 3. Obtener el Access Key
+// 4. Configurar la variable de entorno VITE_WEB3FORMS_ACCESS_KEY con ese Access Key
+// O reemplazar 'YOUR_ACCESS_KEY_HERE' directamente con el Access Key obtenido
 const accessKey = ref(import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KEY_HERE');
 
 const contactInfo = {

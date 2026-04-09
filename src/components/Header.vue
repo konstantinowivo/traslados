@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :class="{ scrolled: isScrolled }">
     <nav class="navbar">
       <div class="container">
         <a href="#" class="logo" @click.prevent="scrollToTop">
@@ -7,14 +7,14 @@
         </a>
         <button
           class="hamburger"
-          :class="{ active: menuActive }"
+          :class="{ active: menuActive, hidden: isScrolled }"
           @click="toggleMenu"
         >
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </button>
-        <ul class="nav-menu" :class="{ active: menuActive }">
+        <ul class="nav-menu" :class="{ active: menuActive, hidden: isScrolled }">
           <li v-for="item in navItems" :key="item.id">
             <a
               :href="item.link"
@@ -44,6 +44,7 @@ import { useI18n } from '../composables/useI18n';
 const { currentLanguage, t, toggleLanguage } = useI18n();
 
 const menuActive = ref(false);
+const isScrolled = ref(false);
 
 const navItems = computed(() => [
   { id: 1, text: t.value.nav.home, link: '#inicio' },
@@ -67,6 +68,10 @@ const scrollToTop = () => {
   });
 };
 
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 100;
+};
+
 const handleClickOutside = (e) => {
   const nav = document.querySelector('.nav-menu');
   const hamburger = document.querySelector('.hamburger');
@@ -78,26 +83,43 @@ const handleClickOutside = (e) => {
 
 onMounted(() => {
   document.addEventListener('click', handleClickOutside);
+  window.addEventListener('scroll', handleScroll);
 });
 
 onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside);
+  window.removeEventListener('scroll', handleScroll);
 });
 </script>
 
 <style scoped>
 header {
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+header.scrolled {
   background: linear-gradient(to right,
-              rgba(0, 0, 0, 0.65) 0%,
-              rgba(0, 0, 0, 0.35) 50%,
-              rgba(0, 0, 0, 0.15) 100%),
+              rgba(0, 0, 0, 0.85) 0%,
+              rgba(0, 0, 0, 0.75) 50%,
+              rgba(0, 0, 0, 0.65) 100%),
               url('/images/cataratas2.jpg');
   background-size: cover;
   background-position: center right;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+header.scrolled .navbar {
+  padding: 0.5rem 0;
+}
+
+header.scrolled .logo-image {
+  height: 60px;
 }
 
 .navbar {
@@ -127,6 +149,7 @@ header {
   height: 99px;
   width: auto;
   object-fit: contain;
+  transition: all 0.3s ease;
 }
 
 .logo h1 {
@@ -140,6 +163,13 @@ header {
   list-style: none;
   gap: 2rem;
   justify-content: center;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.nav-menu.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .nav-menu a {
@@ -215,6 +245,13 @@ header {
   cursor: pointer;
   padding: 0;
   z-index: 101;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.hamburger.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .hamburger .bar {

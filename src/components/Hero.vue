@@ -38,10 +38,11 @@ const whatsappLink = computed(() => {
               url('/images/cataratas2.jpg');
   background-size: cover;
   background-position: center right;
-  height: 600px;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   color: white;
+  padding-top: 120px;
 }
 
 .hero-content {
@@ -138,7 +139,8 @@ const whatsappLink = computed(() => {
 
 @media (max-width: 480px) {
   .hero {
-    height: 500px;
+    min-height: 100vh;
+    padding-top: 100px;
   }
 
   .hero-content {

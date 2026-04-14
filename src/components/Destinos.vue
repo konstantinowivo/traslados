@@ -3,20 +3,27 @@
     <div class="container">
       <h2 class="section-title">{{ t.destinations.title }}</h2>
       <div class="destinos-grid">
-        <div
+        <article
           v-for="destino in destinos"
           :key="destino.id"
           class="destino-card"
+          itemscope
+          itemtype="https://schema.org/TouristAttraction"
         >
-          <div
+          <img
+            :src="destino.image"
+            :alt="destino.alt"
             class="destino-image"
-            :class="destino.className"
-          ></div>
+            loading="lazy"
+            width="350"
+            height="250"
+            itemprop="image"
+          />
           <div class="destino-info">
-            <h3>{{ destino.title }}</h3>
-            <p>{{ destino.description }}</p>
+            <h3 itemprop="name">{{ destino.title }}</h3>
+            <p itemprop="description">{{ destino.description }}</p>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
@@ -31,55 +38,64 @@ const { t } = useI18n();
 const destinos = computed(() => [
   {
     id: 1,
-    className: 'cataratas',
+    image: '/images/cataratas1.jpg',
+    alt: 'Cataratas del Iguazú Argentina - Pasarelas sobre las cascadas',
     title: t.value.destinations.cataratas.title,
     description: t.value.destinations.cataratas.description
   },
   {
     id: 2,
-    className: 'san-ignacio',
+    image: '/images/ruinas_san_ignacio.jpg',
+    alt: 'Ruinas Jesuíticas de San Ignacio Miní - Patrimonio de la Humanidad UNESCO',
     title: t.value.destinations.ruinas.title,
     description: t.value.destinations.ruinas.description
   },
   {
     id: 3,
-    className: 'salto-encantado',
+    image: '/images/salto_encantado.jpg',
+    alt: 'Salto Encantado Misiones - Cascada en medio de la selva',
     title: t.value.destinations.salto.title,
     description: t.value.destinations.salto.description
   },
   {
     id: 4,
-    className: 'minas-wanda',
+    image: '/images/minas_wanda.png',
+    alt: 'Minas de Wanda - Piedras preciosas y amatistas de Misiones',
     title: t.value.destinations.wanda.title,
     description: t.value.destinations.wanda.description
   },
   {
     id: 5,
-    className: 'jardin-aves',
+    image: '/images/ave1.jpg',
+    alt: 'Jardín de Aves - Parque de aves exóticas en Iguazú',
     title: t.value.destinations.aves.title,
     description: t.value.destinations.aves.description
   },
   {
     id: 6,
-    className: 'hitos',
+    image: '/images/triple_frontera.jpg',
+    alt: 'Hito Tres Fronteras - Punto de encuentro Argentina, Brasil y Paraguay',
     title: t.value.destinations.hitos.title,
     description: t.value.destinations.hitos.description
   },
   {
     id: 7,
-    className: 'cataratas-brasil',
+    image: '/images/cataratas_brasil.jpg',
+    alt: 'Cataratas del Iguazú lado brasileño - Vista panorámica de las cascadas',
     title: t.value.destinations.cataratasBrasil.title,
     description: t.value.destinations.cataratasBrasil.description
   },
   {
     id: 8,
-    className: 'mocona',
+    image: '/images/saltos_mocona.jpg',
+    alt: 'Saltos del Moconá - Cascadas longitudinales únicas en el mundo',
     title: t.value.destinations.mocona.title,
     description: t.value.destinations.mocona.description
   },
   {
     id: 9,
-    className: 'shopping',
+    image: '/images/ciudad_del_este.jpg',
+    alt: 'Ciudad del Este Paraguay - Shopping y compras duty free',
     title: t.value.destinations.shopping.title,
     description: t.value.destinations.shopping.description
   }
@@ -141,73 +157,16 @@ const destinos = computed(() => [
 }
 
 .destino-image {
+  width: 100%;
   height: 250px;
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
+  display: block;
   filter: brightness(1.15);
+  transition: transform 0.3s ease;
 }
 
-.cataratas {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
-              url('/images/cataratas1.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.san-ignacio {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
-              url('/images/ruinas_san_ignacio.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.salto-encantado {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
-              url('/images/salto_encantado.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.minas-wanda {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
-              url('/images/minas_wanda.png');
-  background-size: cover;
-  background-position: center;
-}
-
-.jardin-aves {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
-              url('/images/ave1.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.hitos {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
-              url('/images/triple_frontera.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.cataratas-brasil {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
-              url('/images/cataratas_brasil.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.mocona {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
-              url('/images/saltos_mocona.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.shopping {
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)),
-              url('/images/ciudad_del_este.jpg');
-  background-size: cover;
-  background-position: center;
+.destino-card:hover .destino-image {
+  transform: scale(1.05);
 }
 
 .destino-info {

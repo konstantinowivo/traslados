@@ -2,12 +2,13 @@
   <section id="inicio" class="hero">
     <div class="hero-content">
       <p class="company-name">{{ t.hero.company }}</p>
-      <h2>{{ t.hero.title }}</h2>
+      <h1>{{ t.hero.title }}</h1>
       <p>{{ t.hero.subtitle }}</p>
       <a
         :href="whatsappLink"
         class="btn-whatsapp"
         target="_blank"
+        rel="noopener noreferrer"
       >
         {{ t.hero.button }}
       </a>
@@ -65,7 +66,7 @@ const whatsappLink = computed(() => {
                3px 3px 8px rgba(0, 0, 0, 0.8);
 }
 
-.hero-content h2 {
+.hero-content h1 {
   font-size: 4.5rem;
   margin-bottom: 1.5rem;
   text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
@@ -127,7 +128,7 @@ const whatsappLink = computed(() => {
     text-align: center;
   }
 
-  .hero-content h2 {
+  .hero-content h1 {
     font-size: 2.8rem;
   }
 
@@ -147,7 +148,7 @@ const whatsappLink = computed(() => {
     padding: 0 20px;
   }
 
-  .hero-content h2 {
+  .hero-content h1 {
     font-size: 2rem;
   }
 

@@ -1,19 +1,25 @@
 <template>
-  <section id="servicios" class="servicios">
+  <section id="servicios" class="servicios" itemscope itemtype="https://schema.org/Service">
     <div class="container">
       <h2 class="section-title">{{ t.services.title }}</h2>
-      <div class="servicios-list">
-        <div
+      <div class="servicios-list" role="list">
+        <article
           v-for="servicio in servicios"
           :key="servicio.id"
           class="servicio-item"
+          role="listitem"
+          itemscope
+          itemtype="https://schema.org/Service"
         >
-          <div class="servicio-number">{{ String(servicio.id).padStart(2, '0') }}</div>
+          <div class="servicio-number" aria-hidden="true">{{ String(servicio.id).padStart(2, '0') }}</div>
           <div class="servicio-content">
-            <h3>{{ servicio.title }}</h3>
-            <p>{{ servicio.description }}</p>
+            <h3 itemprop="name">{{ servicio.title }}</h3>
+            <p itemprop="description">{{ servicio.description }}</p>
+            <meta itemprop="serviceType" :content="servicio.title">
+            <meta itemprop="areaServed" content="Misiones, Argentina">
+            <meta itemprop="provider" content="Traslados Misiones">
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>

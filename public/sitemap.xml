@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Página principal -->
+  <url>
+    <loc>https://trasladosmisiones.com/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://trasladosmisiones.com/images/cataratas2.jpg</image:loc>
+      <image:title>Cataratas del Iguazú</image:title>
+    </image:image>
+  </url>
+
+  <!-- Sección Inicio -->
+  <url>
+    <loc>https://trasladosmisiones.com/#inicio</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Sección Destinos -->
+  <url>
+    <loc>https://trasladosmisiones.com/#destinos</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://trasladosmisiones.com/images/cataratas1.jpg</image:loc>
+      <image:title>Cataratas del Iguazú Argentina</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trasladosmisiones.com/images/ruinas_san_ignacio.jpg</image:loc>
+      <image:title>Ruinas de San Ignacio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://trasladosmisiones.com/images/saltos_mocona.jpg</image:loc>
+      <image:title>Saltos del Moconá</image:title>
+    </image:image>
+  </url>
+
+  <!-- Sección Servicios -->
+  <url>
+    <loc>https://trasladosmisiones.com/#servicios</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Sección Contacto -->
+  <url>
+    <loc>https://trasladosmisiones.com/#contacto</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

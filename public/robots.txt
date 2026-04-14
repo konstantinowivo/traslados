@@ -1,0 +1,22 @@
+# robots.txt para Traslados Misiones
+User-agent: *
+Allow: /
+Allow: /images/
+Disallow: /src/
+Disallow: /.env
+Disallow: /node_modules/
+
+# Sitemaps
+Sitemap: https://trasladosmisiones.com/sitemap.xml
+
+# Crawl-delay para bots más agresivos
+User-agent: Baiduspider
+Crawl-delay: 5
+
+User-agent: Yandex
+Crawl-delay: 5
+
+# Prioridad para Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0

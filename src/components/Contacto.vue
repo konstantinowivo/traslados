@@ -1,20 +1,10 @@
 <template>
-  <section id="contacto" class="contacto">
+  <section id="contacto" class="contacto" itemscope itemtype="https://schema.org/ContactPage">
     <div class="container">
       <h2 class="section-title">{{ t.contact.title }}</h2>
       <div class="contacto-content">
         <div class="contacto-form">
           <form @submit.prevent="handleSubmit">
-            <!-- Campo oculto para Web3Forms - REEMPLAZAR 'YOUR_ACCESS_KEY_HERE' con el Access Key real -->
-            <input type="hidden" name="access_key" :value="accessKey">
-
-            <!-- Email de destino donde se recibirán los formularios -->
-            <input type="hidden" name="from_name" value="Traslados Misiones - Formulario Web">
-            <input type="hidden" name="subject" value="Nueva consulta desde el sitio web">
-            <input type="hidden" name="redirect" value="https://trasladosmalvinas.vercel.app/#contacto">
-
-            <!-- Campo honeypot para protección anti-spam -->
-            <input type="checkbox" name="botcheck" style="display: none;">
 
             <div class="form-group">
               <label for="nombre">{{ t.contact.form.name }} *</label>
@@ -95,16 +85,16 @@
               {{ formStatus.message }}
             </div>
 
-            <button type="submit" class="btn-submit" :disabled="formStatus.submitting">
-              {{ formStatus.submitting ? (currentLanguage === 'es' ? 'Enviando...' : 'Sending...') : t.contact.form.submit }}
+            <button type="submit" class="btn-submit">
+              {{ currentLanguage === 'es' ? '📱 Enviar por WhatsApp' : '📱 Send via WhatsApp' }}
             </button>
           </form>
         </div>
-        <div class="contacto-info">
+        <div class="contacto-info" itemscope itemtype="https://schema.org/LocalBusiness">
           <h3>{{ t.contact.info.title }}</h3>
-          <p><strong>📞 {{ t.contact.info.phone }}:</strong> {{ contactInfo.phone }}</p>
-          <p><strong>📍 {{ t.contact.info.location }}:</strong> {{ t.contact.info.locationValue }}</p>
-          <p><strong>⏰ {{ t.contact.info.schedule }}:</strong> {{ t.contact.info.scheduleValue }}</p>
+          <p><strong>📞 {{ t.contact.info.phone }}:</strong> <span itemprop="telephone">{{ contactInfo.phone }}</span></p>
+          <p><strong>📍 {{ t.contact.info.location }}:</strong> <span itemprop="address">{{ t.contact.info.locationValue }}</span></p>
+          <p><strong>⏰ {{ t.contact.info.schedule }}:</strong> <span itemprop="openingHours">{{ t.contact.info.scheduleValue }}</span></p>
           <div class="whatsapp-box">
             <a
               :href="whatsappLink"
@@ -121,19 +111,10 @@
 </template>
 
 <script setup>
-import { reactive, computed, ref } from 'vue';
+import { reactive, computed } from 'vue';
 import { useI18n } from '../composables/useI18n';
 
 const { t, currentLanguage } = useI18n();
-
-// Access Key de Web3Forms obtenido de variables de entorno
-// IMPORTANTE: Para recibir los formularios en julioernestovilches@gmail.com:
-// 1. Ir a https://web3forms.com
-// 2. Registrarse con el email julioernestovilches@gmail.com
-// 3. Obtener el Access Key
-// 4. Configurar la variable de entorno VITE_WEB3FORMS_ACCESS_KEY con ese Access Key
-// O reemplazar 'YOUR_ACCESS_KEY_HERE' directamente con el Access Key obtenido
-const accessKey = ref(import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KEY_HERE');
 
 const contactInfo = {
   phone: '+54 9 3757 312141'
@@ -167,55 +148,97 @@ const formData = reactive({
 });
 
 const formStatus = reactive({
-  submitting: false,
   message: '',
-  type: '' // 'success' o 'error'
+  type: '' // 'success' o 'info'
 });
 
-const handleSubmit = async () => {
-  formStatus.submitting = true;
-  formStatus.message = '';
-
-  try {
-    const formElement = document.querySelector('form');
-    const formDataToSend = new FormData(formElement);
-
-    const response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      body: formDataToSend
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      formStatus.type = 'success';
-      formStatus.message = t.value.contact.form.successMessage;
-
-      // Resetear el formulario
-      formData.nombre = '';
-      formData.email = '';
-      formData.telefono = '';
-      formData.destino = '';
-      formData.fecha = '';
-      formData.pasajeros = null;
-      formData.mensaje = '';
-    } else {
-      throw new Error('Error al enviar el formulario');
-    }
-  } catch (error) {
+const handleSubmit = () => {
+  // Validar campos requeridos
+  if (!formData.nombre || !formData.email || !formData.telefono) {
     formStatus.type = 'error';
     formStatus.message = currentLanguage.value === 'es'
-      ? 'Hubo un error al enviar el formulario. Por favor, intenta nuevamente.'
-      : 'There was an error submitting the form. Please try again.';
-    console.error('Error:', error);
-  } finally {
-    formStatus.submitting = false;
+      ? 'Por favor completa todos los campos obligatorios (*)'
+      : 'Please fill in all required fields (*)';
 
-    // Limpiar mensaje después de 5 segundos
     setTimeout(() => {
       formStatus.message = '';
-    }, 5000);
+    }, 3000);
+    return;
   }
+
+  // Construir mensaje estructurado para WhatsApp
+  let message = currentLanguage.value === 'es'
+    ? '🚗 *SOLICITUD DE TRASLADO*\n\n'
+    : '🚗 *TRANSFER REQUEST*\n\n';
+
+  // Datos personales
+  message += currentLanguage.value === 'es' ? '👤 *Datos del Cliente:*\n' : '👤 *Customer Information:*\n';
+  message += `• ${currentLanguage.value === 'es' ? 'Nombre' : 'Name'}: ${formData.nombre}\n`;
+  message += `• Email: ${formData.email}\n`;
+  message += `• ${currentLanguage.value === 'es' ? 'Teléfono' : 'Phone'}: ${formData.telefono}\n\n`;
+
+  // Detalles del viaje (si están completados)
+  if (formData.destino || formData.fecha || formData.pasajeros) {
+    message += currentLanguage.value === 'es' ? '📍 *Detalles del Viaje:*\n' : '📍 *Trip Details:*\n';
+
+    if (formData.destino) {
+      const destinoTexto = destinos.value.find(d => d.value === formData.destino)?.text || formData.destino;
+      message += `• ${currentLanguage.value === 'es' ? 'Destino' : 'Destination'}: ${destinoTexto}\n`;
+    }
+
+    if (formData.fecha) {
+      // Formatear fecha
+      const fecha = new Date(formData.fecha + 'T00:00:00');
+      const fechaFormateada = fecha.toLocaleDateString(currentLanguage.value === 'es' ? 'es-AR' : 'en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      message += `• ${currentLanguage.value === 'es' ? 'Fecha' : 'Date'}: ${fechaFormateada}\n`;
+    }
+
+    if (formData.pasajeros) {
+      message += `• ${currentLanguage.value === 'es' ? 'Pasajeros' : 'Passengers'}: ${formData.pasajeros}\n`;
+    }
+
+    message += '\n';
+  }
+
+  // Mensaje adicional
+  if (formData.mensaje) {
+    message += currentLanguage.value === 'es' ? '💬 *Mensaje:*\n' : '💬 *Message:*\n';
+    message += `${formData.mensaje}\n\n`;
+  }
+
+  message += currentLanguage.value === 'es'
+    ? '---\n_Enviado desde el formulario web de Traslados Misiones_'
+    : '---\n_Sent from Traslados Misiones web form_';
+
+  // Codificar mensaje para URL
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappURL = `https://wa.me/5493757312141?text=${encodedMessage}`;
+
+  // Abrir WhatsApp
+  window.open(whatsappURL, '_blank');
+
+  // Mostrar mensaje de confirmación
+  formStatus.type = 'success';
+  formStatus.message = currentLanguage.value === 'es'
+    ? '✅ Abriendo WhatsApp con tu mensaje...'
+    : '✅ Opening WhatsApp with your message...';
+
+  // Resetear formulario después de 2 segundos
+  setTimeout(() => {
+    formData.nombre = '';
+    formData.email = '';
+    formData.telefono = '';
+    formData.destino = '';
+    formData.fecha = '';
+    formData.pasajeros = null;
+    formData.mensaje = '';
+
+    formStatus.message = '';
+  }, 2000);
 };
 </script>
 
@@ -342,23 +365,21 @@ const handleSubmit = async () => {
 .btn-submit {
   width: 100%;
   padding: 15px;
-  background-color: #4CAF50;
+  background-color: #25D366;
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
-.btn-submit:hover:not(:disabled) {
-  background-color: #45a049;
-}
-
-.btn-submit:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.btn-submit:hover {
+  background-color: #20ba5a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
 }
 
 .form-message {

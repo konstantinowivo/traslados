@@ -4,8 +4,21 @@
     <Hero />
     <Destinos />
     <Servicios />
+    <Visitanos />
     <Contacto />
     <Footer />
+
+    <!-- Botón scroll to top -->
+    <button
+      v-show="showScrollTop"
+      @click="scrollToTop"
+      class="scroll-top-btn"
+      aria-label="Volver arriba"
+    >
+      <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+      </svg>
+    </button>
 
     <!-- Botón flotante de WhatsApp -->
     <a
@@ -23,16 +36,68 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
 import Header from './components/Header.vue';
 import Hero from './components/Hero.vue';
 import Destinos from './components/Destinos.vue';
 import Servicios from './components/Servicios.vue';
+import Visitanos from './components/Visitanos.vue';
 import Contacto from './components/Contacto.vue';
 import Footer from './components/Footer.vue';
+
+const showScrollTop = ref(false);
+
+const handleScroll = () => {
+  showScrollTop.value = window.scrollY > 300;
+};
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <style>
 /* Estilos globales se importarán en main.js */
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 115px;
+  right: calc(30px + 0.5vw);
+  width: 55px;
+  height: 55px;
+  background-color: #424242;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.scroll-top-btn:hover {
+  background-color: #2c2c2c;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.scroll-top-btn svg {
+  width: 28px;
+  height: 28px;
+}
 
 .whatsapp-float {
   position: fixed;
@@ -63,6 +128,18 @@ import Footer from './components/Footer.vue';
 }
 
 @media (max-width: 768px) {
+  .scroll-top-btn {
+    bottom: 90px;
+    right: calc(20px + 0.5vw);
+    width: 45px;
+    height: 45px;
+  }
+
+  .scroll-top-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
   .whatsapp-float {
     bottom: 20px;
     right: 20px;

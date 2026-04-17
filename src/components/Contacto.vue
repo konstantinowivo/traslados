@@ -407,8 +407,42 @@ const handleSubmit = () => {
     grid-template-columns: 1fr;
   }
 
+  .contacto-form {
+    padding: 25px;
+  }
+
+  .contacto-info {
+    padding: 25px;
+  }
+
   .section-title {
     font-size: 2rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .btn-submit {
+    padding: 16px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contacto-form {
+    padding: 20px;
+  }
+
+  .contacto-info {
+    padding: 20px;
+  }
+
+  .contacto-info h3 {
+    font-size: 1.3rem;
   }
 }
 </style>

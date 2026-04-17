@@ -8,7 +8,8 @@ const translations = {
       home: 'Inicio',
       destinations: 'Destinos',
       services: 'Servicios',
-      contact: 'Contacto'
+      contact: 'Contacto',
+      visitanos: 'Visitanos'
     },
     hero: {
       company: 'Taxis y Remises Malvinas',
@@ -108,6 +109,15 @@ const translations = {
         successMessage: 'Gracias por tu consulta. Te contactaremos pronto!'
       }
     },
+    visitanos: {
+      title: 'Visitanos',
+      description: 'Estamos ubicados en calle Cardenal, paralela a Av. Victoria Aguirre, frente a la rotonda de acceso principal.',
+      mapTitle: 'Ubicación de Taxis y Remises Malvinas en Google Maps',
+      addressTitle: 'Nuestra Ubicación',
+      address: 'Cardenal, Puerto Iguazú, Misiones, Argentina',
+      accessTitle: 'Cómo Llegar',
+      accessInfo: 'Calle paralela a Av. Victoria Aguirre, frente a la rotonda de acceso principal. Fácil acceso desde cualquier punto de la ciudad.'
+    },
     footer: {
       rights: 'Todos los derechos reservados',
       slogan: 'Descubrí la magia de Misiones con seguridad y confort'
@@ -118,7 +128,8 @@ const translations = {
       home: 'Home',
       destinations: 'Destinations',
       services: 'Services',
-      contact: 'Contact'
+      contact: 'Contact',
+      visitanos: 'Visit Us'
     },
     hero: {
       company: 'Taxis y Remises Malvinas',
@@ -217,6 +228,15 @@ const translations = {
         submit: 'Send Inquiry',
         successMessage: 'Thank you for your inquiry. We will contact you soon!'
       }
+    },
+    visitanos: {
+      title: 'Visit Us',
+      description: 'We are located on Cardenal street, parallel to Victoria Aguirre Avenue, in front of the main access roundabout.',
+      mapTitle: 'Location of Taxis y Remises Malvinas on Google Maps',
+      addressTitle: 'Our Location',
+      address: 'Cardenal, Puerto Iguazú, Misiones, Argentina',
+      accessTitle: 'How to Get Here',
+      accessInfo: 'Street parallel to Victoria Aguirre Avenue, in front of the main access roundabout. Easy access from anywhere in the city.'
     },
     footer: {
       rights: 'All rights reserved',

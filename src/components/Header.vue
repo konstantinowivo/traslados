@@ -50,7 +50,8 @@ const navItems = computed(() => [
   { id: 1, text: t.value.nav.home, link: '#inicio' },
   { id: 2, text: t.value.nav.destinations, link: '#destinos' },
   { id: 3, text: t.value.nav.services, link: '#servicios' },
-  { id: 4, text: t.value.nav.contact, link: '#contacto' }
+  { id: 4, text: t.value.nav.visitanos, link: '#visitanos' },
+  { id: 5, text: t.value.nav.contact, link: '#contacto' }
 ]);
 
 const toggleMenu = () => {
@@ -285,12 +286,14 @@ header.scrolled .logo-image {
   .hamburger {
     display: flex;
     order: 3;
+    padding: 10px;
   }
 
   .nav-menu {
     position: fixed;
     left: -100%;
-    top: 115px;
+    top: 0;
+    margin-top: calc(60px + 2rem);
     flex-direction: column;
     background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
                 url('/images/cataratas2.jpg');
@@ -298,12 +301,16 @@ header.scrolled .logo-image {
     background-position: center;
     width: 100%;
     text-align: center;
-    transition: left 0.3s ease;
+    transition: left 0.3s ease, margin-top 0.3s ease;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.1);
     padding: 2rem 0;
     gap: 0;
     z-index: 99;
     order: 4;
+  }
+
+  header:not(.scrolled) .nav-menu {
+    margin-top: calc(99px + 2rem);
   }
 
   .nav-menu.active {
@@ -332,7 +339,7 @@ header.scrolled .logo-image {
     justify-content: center;
     position: fixed;
     left: -100%;
-    top: calc(115px + (4 * 3rem) + 2rem);
+    bottom: 0;
     width: 100%;
     background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
                 url('/images/cataratas2.jpg');

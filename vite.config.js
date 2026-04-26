@@ -3,8 +3,8 @@ import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
   plugins: [vue()],
-  // Usa '/' para Vercel, '/traslados/' para GitHub Pages
-  base: process.env.VERCEL ? '/' : '/traslados/',
+  // Base '/' porque el dominio personalizado trasladosmalvinas.com.ar sirve desde la raíz
+  base: '/',
   server: {
     port: 3000,
     open: true

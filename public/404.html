@@ -2,11 +2,18 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=/traslados/">
+    <title>Redirigiendo... | Traslados Malvinas</title>
+    <link rel="canonical" href="https://trasladosmalvinas.com.ar/">
+    <script>
+        // Redirige a la raíz preservando el hash de sección si lo hay
+        var segment = window.location.hash || '';
+        window.location.replace('/' + segment);
+    </script>
+    <noscript>
+        <meta http-equiv="refresh" content="0;url=/">
+    </noscript>
 </head>
 <body>
-    <script>
-        window.location.href = '/traslados/';
-    </script>
+    <p>Redirigiendo a <a href="/">trasladosmalvinas.com.ar</a>...</p>
 </body>
 </html>

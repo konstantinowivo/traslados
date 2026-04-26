@@ -1,13 +1,11 @@
-# robots.txt para Traslados Misiones
+# robots.txt para Traslados Malvinas
 User-agent: *
 Allow: /
 Allow: /images/
-Disallow: /src/
 Disallow: /.env
-Disallow: /node_modules/
 
 # Sitemaps
-Sitemap: https://trasladosmisiones.com/sitemap.xml
+Sitemap: https://trasladosmalvinas.com.ar/sitemap.xml
 
 # Crawl-delay para bots más agresivos
 User-agent: Baiduspider

@@ -2,60 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-  <!-- Página principal -->
+  <!-- Página principal con todas las imágenes indexables -->
   <url>
-    <loc>https://trasladosmisiones.com/</loc>
-    <lastmod>2026-04-13</lastmod>
+    <loc>https://trasladosmalvinas.com.ar/</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://trasladosmisiones.com/images/cataratas2.jpg</image:loc>
-      <image:title>Cataratas del Iguazú</image:title>
+      <image:loc>https://trasladosmalvinas.com.ar/images/cataratas2.jpg</image:loc>
+      <image:title>Cataratas del Iguazú - Traslados Malvinas</image:title>
+      <image:caption>Vista panorámica de las Cataratas del Iguazú, Misiones Argentina</image:caption>
     </image:image>
-  </url>
-
-  <!-- Sección Inicio -->
-  <url>
-    <loc>https://trasladosmisiones.com/#inicio</loc>
-    <lastmod>2026-04-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Sección Destinos -->
-  <url>
-    <loc>https://trasladosmisiones.com/#destinos</loc>
-    <lastmod>2026-04-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
     <image:image>
-      <image:loc>https://trasladosmisiones.com/images/cataratas1.jpg</image:loc>
+      <image:loc>https://trasladosmalvinas.com.ar/images/cataratas1.jpg</image:loc>
       <image:title>Cataratas del Iguazú Argentina</image:title>
+      <image:caption>Cataratas del Iguazú, una de las 7 maravillas naturales del mundo</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://trasladosmisiones.com/images/ruinas_san_ignacio.jpg</image:loc>
-      <image:title>Ruinas de San Ignacio</image:title>
+      <image:loc>https://trasladosmalvinas.com.ar/images/ruinas_san_ignacio.jpg</image:loc>
+      <image:title>Ruinas Jesuíticas de San Ignacio</image:title>
+      <image:caption>Ruinas de San Ignacio, Patrimonio de la Humanidad UNESCO</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://trasladosmisiones.com/images/saltos_mocona.jpg</image:loc>
+      <image:loc>https://trasladosmalvinas.com.ar/images/saltos_mocona.jpg</image:loc>
       <image:title>Saltos del Moconá</image:title>
+      <image:caption>Saltos del Moconá, cascadas longitudinales únicas en el mundo</image:caption>
     </image:image>
-  </url>
-
-  <!-- Sección Servicios -->
-  <url>
-    <loc>https://trasladosmisiones.com/#servicios</loc>
-    <lastmod>2026-04-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Sección Contacto -->
-  <url>
-    <loc>https://trasladosmisiones.com/#contacto</loc>
-    <lastmod>2026-04-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://trasladosmalvinas.com.ar/images/minas_wanda.png</image:loc>
+      <image:title>Minas de Wanda</image:title>
+      <image:caption>Minas de Wanda, gemas semipreciosas en Misiones</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trasladosmalvinas.com.ar/images/triple_frontera.jpg</image:loc>
+      <image:title>Triple Frontera Argentina Brasil Paraguay</image:title>
+      <image:caption>Triple Frontera entre Argentina, Brasil y Paraguay</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trasladosmalvinas.com.ar/images/salto_encantado.jpg</image:loc>
+      <image:title>Salto Encantado Misiones</image:title>
+      <image:caption>Salto Encantado, Parque Provincial Salto Encantado</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trasladosmalvinas.com.ar/images/ciudad_del_este.jpg</image:loc>
+      <image:title>Ciudad del Este Paraguay</image:title>
+      <image:caption>Ciudad del Este, Paraguay - destino de compras</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trasladosmalvinas.com.ar/images/cataratas_brasil.jpg</image:loc>
+      <image:title>Cataratas del Iguazú lado Brasil</image:title>
+      <image:caption>Cataratas del Iguazú vistas desde el lado brasileño</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trasladosmalvinas.com.ar/images/ave1.jpg</image:loc>
+      <image:title>Fauna de Misiones</image:title>
+      <image:caption>Fauna autóctona de Misiones Argentina</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://trasladosmalvinas.com.ar/images/traslados_malvinas.png</image:loc>
+      <image:title>Traslados Malvinas</image:title>
+      <image:caption>Traslados Malvinas - Servicio de traslados turísticos en Misiones</image:caption>
+    </image:image>
   </url>
 
 </urlset>

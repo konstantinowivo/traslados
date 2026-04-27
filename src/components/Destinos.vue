@@ -10,15 +10,18 @@
           itemscope
           itemtype="https://schema.org/TouristAttraction"
         >
-          <img
-            :src="destino.image"
-            :alt="destino.alt"
-            class="destino-image"
-            loading="lazy"
-            width="350"
-            height="250"
-            itemprop="image"
-          />
+          <picture>
+            <source :srcset="destino.imageWebp" type="image/webp">
+            <img
+              :src="destino.image"
+              :alt="destino.alt"
+              class="destino-image"
+              loading="lazy"
+              width="350"
+              height="250"
+              itemprop="image"
+            />
+          </picture>
           <div class="destino-info">
             <h3 itemprop="name">{{ destino.title }}</h3>
             <p itemprop="description">{{ destino.description }}</p>
@@ -39,6 +42,7 @@ const destinos = computed(() => [
   {
     id: 1,
     image: '/images/cataratas1.jpg',
+    imageWebp: '/images/cataratas1.webp',
     alt: 'Cataratas del Iguazú Argentina - Pasarelas sobre las cascadas',
     title: t.value.destinations.cataratas.title,
     description: t.value.destinations.cataratas.description
@@ -46,6 +50,7 @@ const destinos = computed(() => [
   {
     id: 2,
     image: '/images/ruinas_san_ignacio.jpg',
+    imageWebp: '/images/ruinas_san_ignacio.webp',
     alt: 'Ruinas Jesuíticas de San Ignacio Miní - Patrimonio de la Humanidad UNESCO',
     title: t.value.destinations.ruinas.title,
     description: t.value.destinations.ruinas.description
@@ -53,6 +58,7 @@ const destinos = computed(() => [
   {
     id: 3,
     image: '/images/salto_encantado.jpg',
+    imageWebp: '/images/salto_encantado.webp',
     alt: 'Salto Encantado Misiones - Cascada en medio de la selva',
     title: t.value.destinations.salto.title,
     description: t.value.destinations.salto.description
@@ -60,6 +66,7 @@ const destinos = computed(() => [
   {
     id: 4,
     image: '/images/minas_wanda.png',
+    imageWebp: '/images/minas_wanda.webp',
     alt: 'Minas de Wanda - Piedras preciosas y amatistas de Misiones',
     title: t.value.destinations.wanda.title,
     description: t.value.destinations.wanda.description
@@ -67,6 +74,7 @@ const destinos = computed(() => [
   {
     id: 5,
     image: '/images/ave1.jpg',
+    imageWebp: '/images/ave1.webp',
     alt: 'Jardín de Aves - Parque de aves exóticas en Iguazú',
     title: t.value.destinations.aves.title,
     description: t.value.destinations.aves.description
@@ -74,6 +82,7 @@ const destinos = computed(() => [
   {
     id: 6,
     image: '/images/triple_frontera.jpg',
+    imageWebp: '/images/triple_frontera.webp',
     alt: 'Hito Tres Fronteras - Punto de encuentro Argentina, Brasil y Paraguay',
     title: t.value.destinations.hitos.title,
     description: t.value.destinations.hitos.description
@@ -81,6 +90,7 @@ const destinos = computed(() => [
   {
     id: 7,
     image: '/images/cataratas_brasil.jpg',
+    imageWebp: '/images/cataratas_brasil.webp',
     alt: 'Cataratas del Iguazú lado brasileño - Vista panorámica de las cascadas',
     title: t.value.destinations.cataratasBrasil.title,
     description: t.value.destinations.cataratasBrasil.description
@@ -88,6 +98,7 @@ const destinos = computed(() => [
   {
     id: 8,
     image: '/images/saltos_mocona.jpg',
+    imageWebp: '/images/saltos_mocona.webp',
     alt: 'Saltos del Moconá - Cascadas longitudinales únicas en el mundo',
     title: t.value.destinations.mocona.title,
     description: t.value.destinations.mocona.description
@@ -95,6 +106,7 @@ const destinos = computed(() => [
   {
     id: 9,
     image: '/images/ciudad_del_este.jpg',
+    imageWebp: '/images/ciudad_del_este.webp',
     alt: 'Ciudad del Este Paraguay - Shopping y compras duty free',
     title: t.value.destinations.shopping.title,
     description: t.value.destinations.shopping.description

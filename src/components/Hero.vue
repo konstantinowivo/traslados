@@ -36,7 +36,7 @@ const whatsappLink = computed(() => {
               rgba(0, 0, 0, 0.65) 0%,
               rgba(0, 0, 0, 0.35) 50%,
               rgba(0, 0, 0, 0.15) 100%),
-              url('/images/cataratas2.jpg');
+              url('/images/cataratas2.webp');
   background-size: cover;
   background-position: center right;
   min-height: 100vh;
@@ -119,7 +119,7 @@ const whatsappLink = computed(() => {
   .hero {
     background-position: center;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                url('/images/cataratas2.jpg');
+                url('/images/cataratas2.webp');
     background-size: cover;
   }
 

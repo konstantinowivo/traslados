@@ -109,7 +109,7 @@ header.scrolled {
               rgba(0, 0, 0, 0.85) 0%,
               rgba(0, 0, 0, 0.75) 50%,
               rgba(0, 0, 0, 0.65) 100%),
-              url('/images/cataratas2.jpg');
+              url('/images/cataratas2.webp');
   background-size: cover;
   background-position: center right;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
@@ -296,7 +296,7 @@ header.scrolled .logo-image {
     margin-top: calc(60px + 2rem);
     flex-direction: column;
     background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
-                url('/images/cataratas2.jpg');
+                url('/images/cataratas2.webp');
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -342,7 +342,7 @@ header.scrolled .logo-image {
     bottom: 0;
     width: 100%;
     background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
-                url('/images/cataratas2.jpg');
+                url('/images/cataratas2.webp');
     background-size: cover;
     background-position: center;
     transition: left 0.3s ease;

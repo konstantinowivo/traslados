@@ -17,7 +17,7 @@
             <p itemprop="description">{{ servicio.description }}</p>
             <meta itemprop="serviceType" :content="servicio.title">
             <meta itemprop="areaServed" content="Misiones, Argentina">
-            <meta itemprop="provider" content="Traslados Misiones">
+            <meta itemprop="provider" content="Traslados Malvinas">
           </div>
         </article>
       </div>

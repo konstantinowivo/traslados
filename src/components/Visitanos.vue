@@ -4,8 +4,9 @@
       <h2 class="section-title">{{ t.visitanos.title }}</h2>
       <p class="section-description">{{ t.visitanos.description }}</p>
 
-      <div class="map-container">
+      <div class="map-container" ref="mapContainer">
         <iframe
+          v-if="mapVisible"
           src="https://www.google.com/maps?q=-25.6118283,-54.5621833&output=embed"
           class="map-iframe"
           allowfullscreen=""
@@ -13,15 +14,36 @@
           referrerpolicy="no-referrer-when-downgrade"
           :title="t.visitanos.mapTitle"
         ></iframe>
+        <div v-else class="map-placeholder" aria-hidden="true"></div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useI18n } from '../composables/useI18n';
 
 const { t } = useI18n();
+const mapContainer = ref(null);
+const mapVisible = ref(false);
+
+let observer;
+
+onMounted(() => {
+  observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        mapVisible.value = true;
+        observer.disconnect();
+      }
+    },
+    { rootMargin: '200px' }
+  );
+  if (mapContainer.value) observer.observe(mapContainer.value);
+});
+
+onUnmounted(() => observer?.disconnect());
 </script>
 
 <style scoped>
@@ -83,6 +105,12 @@ const { t } = useI18n();
   height: 450px;
   border: 0;
   display: block;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 450px;
+  background-color: #e8f0e8;
 }
 
 @media (max-width: 768px) {

@@ -211,8 +211,8 @@ const handleSubmit = () => {
   }
 
   message += currentLanguage.value === 'es'
-    ? '---\n_Enviado desde el formulario web de Traslados Misiones_'
-    : '---\n_Sent from Traslados Misiones web form_';
+    ? '---\n_Enviado desde el formulario web de Traslados Malvinas_'
+    : '---\n_Sent from Traslados Malvinas web form_';
 
   // Codificar mensaje para URL
   const encodedMessage = encodeURIComponent(message);

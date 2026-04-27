@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="container">
-      <p>&copy; {{ currentYear }} Traslados Misiones. {{ t.footer.rights }}.</p>
+      <p>&copy; {{ currentYear }} Traslados Malvinas. {{ t.footer.rights }}.</p>
       <p>{{ t.footer.slogan }}</p>
     </div>
   </footer>
